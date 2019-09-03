@@ -33,8 +33,6 @@ class App extends React.Component {
                 ...snapShot.data()
               }
             });  // cannot actually get any data from this untill using .data
-
-            console.log(this.state);
           });
           
         }
