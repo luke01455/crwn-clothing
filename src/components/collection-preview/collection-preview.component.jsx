@@ -12,8 +12,8 @@ const CollectionPreview = ({ title, items }) => (
         // filter index to only display first 4
            .filter((item, idx) => idx < 4)
         // map through the items to give key and name
-           .map(({id, ...otherItemProps}) => (
-                <CollectionItem key={id}{...otherItemProps}/>
+           .map((item) => (
+                <CollectionItem key={item.id}item={item} />
            ))    
         }
         </div>
