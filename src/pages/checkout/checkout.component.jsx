@@ -7,7 +7,7 @@ import StripeCheckoutButton from '../../components/stripe-button/stripe-button.c
 
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
 
-import { CheckoutPageContainer, CheckoutHeaderContainer, HeaderBlock, Total, TestWarning, StripeCheckoutButtonJSX} from './checkout.styles';
+import { CheckoutPageContainer, CheckoutHeaderContainer, HeaderBlock, Total, TestWarning } from './checkout.styles';
 
 const CheckoutPage = ({cartItems, total}) => (
     <CheckoutPageContainer>
