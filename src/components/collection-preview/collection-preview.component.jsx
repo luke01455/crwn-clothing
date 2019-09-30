@@ -1,13 +1,14 @@
 import React from 'react';
 
 import CollectionItem from '../collection-item/collection-item.component';
-import './collection-preview.styles.scss';
+
+import { CollectionPreviewContainer, PreviewContainer, Title } from './collection-preview.styles';
 
 // when collection preview is used in shop, it gives SHOP_DATA as the props
 const CollectionPreview = ({ title, items }) => (
-    <div className='collection-preview'>
-        <h1 className='title'>{title.toUpperCase()}</h1>
-        <div className='preview'>
+    <CollectionPreviewContainer>
+        <Title>{title.toUpperCase()}</Title>
+        <PreviewContainer>
         {items
         // filter index to only display first 4
            .filter((item, idx) => idx < 4)
@@ -16,8 +17,8 @@ const CollectionPreview = ({ title, items }) => (
                 <CollectionItem key={item.id}item={item} />
            ))    
         }
-        </div>
-    </div>
+        </PreviewContainer>
+    </CollectionPreviewContainer>
 )
 
 export default CollectionPreview;
