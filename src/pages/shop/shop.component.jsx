@@ -17,7 +17,7 @@ class ShopPage extends React.Component {
         const collectionRef = firestore.collection('collections');
 
             // onSnapshop means when code renders 
-        collectionRef.onSnapshot(async snapshot => {
+        collectionRef.onSnapshot(snapshot => {
             const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
             updateCollections(collectionsMap);
         });
