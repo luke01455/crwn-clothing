@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { transform } from '@babel/core';
 
 const config = {
     apiKey: "AIzaSyDJcJ82mrvdk0et-Ld_Cw-ZXAWGlM2xP_o",
@@ -32,17 +33,32 @@ const config = {
     return userRef;
   };
 
-  // export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
-  //   const collectionRef = firestore.collection(collectionKey);
+    export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
 
-  //   const batch = firestore.batch();
-  //   objectsToAdd.forEach(obj => {
-  //     const newDocRef = collectionRef.doc();
-  //     batch.set(newDocRef, obj)
-  //   });
+    const batch = firestore.batch();
+    objectsToAdd.forEach(obj => {
+      const newDocRef = collectionRef.doc();
+      batch.set(newDocRef, obj)
+    });
 
-  //   return await batch.commit()
-  // }
+    return await batch.commit()
+  }
+
+  export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+      const { title, items} = doc.data();
+
+      return {
+        routeName: encodeURI(title.toLowerCase()),
+        id: doc.id,
+        title,
+        items
+      }
+    });
+
+    console.log(transformedCollection)
+  }
 
   firebase.initializeApp(config);
 
