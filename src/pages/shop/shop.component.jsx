@@ -24,8 +24,12 @@ class ShopPage extends React.Component {
         const { updateCollections } = this.props;
         const collectionRef = firestore.collection('collections');
 
-            // onSnapshop means when code renders 
-        collectionRef.onSnapshot(snapshot => {
+        // fetch('https://firestore.googleapis.com/v1/projects/crwn-datab/databases/(default)/documents/')
+        // .then(response => response.json())
+        // .then(collections => console.log(collections));
+
+           // onSnapshop means when code renders 
+        collectionRef.get().then(snapshot => {
             const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
             updateCollections(collectionsMap);
             this.setState({ loading: false });
