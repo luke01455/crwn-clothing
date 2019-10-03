@@ -24,3 +24,9 @@ export const selectIsCollectionFetching = createSelector(
     [selectShop],
     shop => shop.isFetching
 )
+
+export const selectIsCollectionsLoaded = createSelector(
+    [selectShop],
+    //double bang converts finds if an object exists or not
+    shop => !!shop.collections
+)
