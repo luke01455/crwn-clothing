@@ -11,7 +11,7 @@ import CollectionPageContainer from '../collection/collection.container';
 class ShopPage extends React.Component {
 
     componentDidMount() {
-        const { fetchCollectionsStart} = this.props;
+        const { fetchCollectionsStart } = this.props;
 
         fetchCollectionsStart();
     }
